@@ -1,0 +1,161 @@
+/* Custom scrollbar styling for WebKit browsers */
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-button {
+  width: 10px;
+  height: 100px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(45deg, blue, cyan);
+  border-radius: 20px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(45deg, darkblue, purple);
+}
+
+@media (min-width: 1024px) {
+  .glass {
+    background: rgba(104, 104, 104, 0.2);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.67);
+    backdrop-filter: blur(0.1px);
+    -webkit-backdrop-filter: blur(3px);
+  }
+}
+
+
+/* Responsive utilities */
+.container {
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+@media (min-width: 576px) {
+  .container {
+    max-width: 540px;
+  }
+}
+
+@media (min-width: 768px) {
+  .container {
+    max-width: 720px;
+  }
+}
+
+@media (min-width: 992px) {
+  .container {
+    max-width: 960px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .container {
+    max-width: 1140px;
+  }
+}
+
+@media (min-width: 1400px) {
+  .container {
+    max-width: 1320px;
+  }
+}
+
+.flex {
+  display: flex;
+}
+
+.flex-col {
+  flex-direction: column;
+}
+
+.items-center {
+  align-items: center;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.hidden {
+  display: none;
+}
+
+.block {
+  display: block;
+}
+
+/* Mobile-first responsive styles */
+@media (max-width: 767px) {
+  body {
+    font-size: 14px;
+  }
+
+  .flex {
+    flex-direction: column;
+  }
+
+  .responsive {
+    width: 100% !important;
+    height: auto !important;
+  }
+
+  .responsive-fixed-height {
+    height: 50vh !important;
+    /* Adjust for mobile */
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  body {
+    font-size: 16px;
+  }
+
+  .flex {
+    flex-direction: row;
+  }
+
+  .responsive {
+    width: 100% !important;
+    height: auto !important;
+  }
+
+  .responsive-fixed-height {
+    height: 75vh !important;
+    /* Adjust for tablet */
+  }
+}
+
+@media (min-width: 1024px) {
+  body {
+    font-size: 18px;
+  }
+
+  .flex {
+    flex-direction: row;
+  }
+
+  .responsive {
+    width: 100% !important;
+    height: auto !important;
+  }
+
+  .responsive-fixed-height {
+    height: 100vh !important;
+  }
+}
+

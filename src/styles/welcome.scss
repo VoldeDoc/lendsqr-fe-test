@@ -1,0 +1,302 @@
+/* welcome.scss - full file */
+
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
+.topImage {
+  margin: 90px 0 12px 50px;
+}
+
+.welcome-container {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.welcome-container .spaced {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 5rem;
+  padding: 2rem;
+  width: 100%;
+  position: relative;
+}
+
+.welcomeImages {
+  width: 100%;
+}
+
+/* ────────────── Form styles ────────────── */
+.loginText {
+  font-size: 1.4rem;
+  color: #545F7D;
+  margin-bottom: 2rem;
+}
+
+.form-section {
+  padding: 3rem 2rem;
+  width: 100%;
+  max-width: 600px;
+  box-sizing: border-box;
+  position: relative;
+  z-index: 4;
+}
+
+.form-section h1 {
+  color: #213F7D;
+  font-weight: 700;
+  font-size: 3rem;
+  margin: 0 0 1rem 0;
+}
+
+.inputGroup {
+  margin-bottom: 1.5rem;
+}
+
+.input,
+.passwordInput {
+  width: 100%;
+  padding: 0.875rem 1rem;
+  border: 2px solid #545F7D26;
+  border-radius: 6px;
+  font-size: 1rem;
+  box-sizing: border-box;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  background-color: #fff;
+
+  &::placeholder {
+    color: #545F7D;
+  }
+}
+
+.input:focus,
+.passwordInput:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.1);
+  outline: none;
+}
+
+.passwordContainer {
+  position: relative;
+}
+
+.togglePassword {
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #39CDCC;
+  font-size: 0.875rem;
+  font-weight: 500;
+  padding: 0.25rem;
+  transition: color 0.3s ease;
+}
+
+.togglePassword:hover {
+  color: #007bff;
+}
+
+.button {
+  width: 100%;
+  padding: 0.875rem 1rem;
+  background-color: #39CDCC;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 1rem;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.button:hover {
+  background-color: #396da5;
+  transform: translateY(-1px);
+}
+
+.button:active {
+  transform: translateY(0);
+}
+
+.error {
+  color: #dc3545;
+  font-size: 0.875rem;
+  margin-top: 0.5rem;
+  font-weight: 500;
+}
+
+/* ────────────── Floating layers ────────────── */
+
+.floating-background,
+.floating-beside {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 3;
+  overflow: hidden;
+}
+
+/* Floating words (shared styles) */
+.greeting {
+  position: absolute;
+  font-family: system-ui, sans-serif;
+  font-weight: 600;
+  font-size: 1.85rem;
+  color: #39CDCC;
+  opacity: 0.75;
+  user-select: none;
+  white-space: nowrap;
+  will-change: transform, opacity;
+
+  animation:
+    drift 42s infinite ease-in-out,
+    floatVertical 26s infinite ease-in-out,
+    pulseOpacity 14s infinite ease-in-out;
+
+  animation-delay: var(--delay, 0s);
+}
+
+/* Background greetings (left side mostly) */
+.g1 { left: 5%;  top: 10%; --delay: -4s; }
+.g2 { left: 14%; top: 22%; --delay: -11s; font-size: 1.4rem; opacity: 0.55; }
+.g3 { left: 7%;  top: 38%; --delay: -17s; }
+.g4 { left: 11%; top: 55%; --delay: -24s; font-size: 1.5rem; opacity: 0.65; }
+.g5 { left: 4%;  top: 72%; --delay: -32s; font-size: 1.3rem; opacity: 0.5; }
+
+/* Beside greetings (right side of form) */
+.greeting.beside {
+  font-size: 1.45rem;
+  opacity: 0.5;
+}
+
+.bg1 { right: 12%; top: 28%; --delay: -6s; }
+.bg2 { right: 8%;  top: 45%; --delay: -14s; }
+.bg3 { right: 14%; top: 62%; --delay: -22s; font-size: 1.25rem; }
+
+/* Dots (shared styles) */
+.dot {
+  position: absolute;
+  width: 5px;
+  height: 5px;
+  background: #39CDCC;
+  border-radius: 50%;
+  opacity: 0.22;
+  will-change: transform, opacity, filter;
+
+  animation:
+    randomDrift 52s infinite linear,
+    pulseDot 11s infinite ease-in-out,
+    colorCycle 28s infinite linear;
+
+  animation-delay: var(--delay, 0s);
+}
+
+/* Background dots */
+.d1 { left: 6%;  top: 8%;  --delay: -3s;  animation-duration: 52s, 11s, 26s; }
+.d2 { left: 18%; top: 15%; --delay: -9s;  animation-duration: 58s, 13s, 32s; }
+.d3 { left: 9%;  top: 32%; --delay: -16s; animation-duration: 48s, 10s, 29s; }
+.d4 { left: 3%;  top: 48%; --delay: -23s; animation-duration: 55s, 12s, 31s; }
+.d5 { left: 13%; top: 58%; --delay: -29s; animation-duration: 50s, 9s,  27s; }
+.d6 { left: 7%;  top: 68%; --delay: -37s; animation-duration: 60s, 14s, 34s; }
+.d7 { left: 16%; top: 79%; --delay: -44s; animation-duration: 54s, 10s, 30s; }
+.d8 { left: 5%;  top: 88%; --delay: -51s; animation-duration: 57s, 12s, 28s; }
+
+/* Beside dots (right side) */
+.dot.beside {
+  opacity: 0.20;
+  width: 4px;
+  height: 4px;
+}
+
+.bd1 { right: 10%; top: 22%; --delay: -5s;  animation-duration: 50s, 12s, 30s; }
+.bd2 { right: 6%;  top: 38%; --delay: -13s; animation-duration: 55s, 14s, 34s; }
+.bd3 { right: 13%; top: 54%; --delay: -20s; animation-duration: 48s, 11s, 28s; }
+.bd4 { right: 9%;  top: 70%; --delay: -28s; animation-duration: 52s, 13s, 32s; }
+
+/* Animations */
+@keyframes drift {
+  0%   { transform: translateX(0vw); }
+  25%  { transform: translateX(16vw); }
+  50%  { transform: translateX(6vw); }
+  75%  { transform: translateX(20vw); }
+  100% { transform: translateX(0vw); }
+}
+
+@keyframes floatVertical {
+  0%, 100%   { transform: translateY(0); }
+  40%        { transform: translateY(-50px); }
+  70%        { transform: translateY(45px); }
+}
+
+@keyframes pulseOpacity {
+  0%, 100% { opacity: 0.20; }
+  50%      { opacity: 0.40; }
+}
+
+@keyframes randomDrift {
+  0%   { transform: translate(0vw, 0vh); }
+  20%  { transform: translate(14vw, -18vh); }
+  40%  { transform: translate(5vw, 22vh); }
+  60%  { transform: translate(18vw, -8vh); }
+  80%  { transform: translate(-3vw, 15vh); }
+  100% { transform: translate(0vw, 0vh); }
+}
+
+@keyframes pulseDot {
+  0%, 100% { transform: scale(1);   opacity: 0.22; }
+  50%      { transform: scale(2.2); opacity: 0.45; }
+}
+
+@keyframes colorCycle {
+  0%   { filter: hue-rotate(0deg) saturate(1.6); }
+  25%  { filter: hue-rotate(90deg) saturate(1.8); }
+  50%  { filter: hue-rotate(180deg) saturate(1.5); }
+  75%  { filter: hue-rotate(270deg) saturate(1.7); }
+  100% { filter: hue-rotate(360deg) saturate(1.6); }
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+  .welcome-container .spaced {
+    flex-direction: column;
+    gap: 4rem;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .welcomeImages {
+    display: none;
+  }
+
+  .floating-background,
+  .floating-beside {
+    display: none;
+  }
+}
+
+.forgotPassword{
+  color: #39CDCC;
+  font-size: 12px;
+  cursor: pointer;
+  transition: color 0.3s ease;
+  text-transform:uppercase;
+  text-decoration: none;
+}
+
+.switchLink{
+  color: #39CDCC;
+  font-size: 14px;
+  cursor: pointer;
+  transition: color 0.3s ease;
+  text-transform:uppercase;
+  text-decoration: none;
+}
