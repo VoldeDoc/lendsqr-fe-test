@@ -51,7 +51,7 @@ A comprehensive admin dashboard application for Lendsqr, designed to manage user
 
 ---
 
-## 📁 Folder Structure
+## Folder Structure
 
 ```
 lendsqr/
@@ -114,7 +114,7 @@ lendsqr/
 
 ---
 
-## 🚀 Setup Instructions
+## Setup Instructions
 
 ### Prerequisites
 - Node.js (v16 or higher)
@@ -156,6 +156,54 @@ yarn dev
 ```
 http://localhost:5173
 ```
+
+## Docker Deployment
+
+### Prerequisites
+- Docker installed on your system
+- Docker Compose (usually included with Docker)
+
+### Quick Start with Docker
+
+1. **Build and run with Docker Compose (Recommended)**
+```bash
+npm run docker:up
+```
+
+2. **Or build manually**
+```bash
+# Build the Docker image
+npm run docker:build
+
+# Run the container
+npm run docker:run
+```
+
+3. **Access the application**
+- Frontend: http://localhost:3000
+- API: http://localhost:5000
+
+### Docker Commands
+
+```bash
+# Build the image
+docker build -t lendsqr-app .
+
+# Run the container
+docker run -p 3000:3000 -p 5000:5000 lendsqr-app
+
+# Run with Docker Compose
+docker-compose up --build
+
+# Stop Docker Compose
+docker-compose down
+```
+
+### What's Included
+- **React App**: Served on port 3000 with production build
+- **JSON Server**: Mock API on port 5000 with your `db.json` data
+- **Hot Reload**: For development (when using volumes)
+- **Multi-stage Build**: Optimized for production
 
 ---
 
