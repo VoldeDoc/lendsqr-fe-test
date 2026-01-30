@@ -4,8 +4,8 @@ services:
   lendsqr-app:
     build: .
     ports:
-      - "${PORT:-3000}:3000"  # Use PORT env var or default to 3000
+      - "3000:3000"  # Only expose frontend port
     environment:
       - NODE_ENV=production
-      - PORT=${PORT:-3000}
+      - VITE_BASE_URL=http://localhost:5000  # Internal API URL
     command: ["/app/start.sh"]
