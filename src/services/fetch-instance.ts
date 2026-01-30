@@ -21,6 +21,7 @@ const handleResponse = async (response: Response) => {
 
 // Generic fetch wrapper with toast
 const fetchWithToast = async (
+  _endpoint: string = "/data/db.json",
   config: RequestConfig = {}
 ) => {
   const {
@@ -56,30 +57,30 @@ const fetchWithToast = async (
 
 // API client methods
 export const apiClient = {
-  get: (config?: RequestConfig) =>
-    fetchWithToast({ ...config, method: 'GET' }),
+  get: (endpoint: string, config?: RequestConfig) =>
+    fetchWithToast(endpoint, { ...config, method: 'GET' }),
 
-  post: (data?: any, config?: RequestConfig) =>
-    fetchWithToast({
+  post: (endpoint: string, data?: any, config?: RequestConfig) =>
+    fetchWithToast(endpoint, {
       ...config,
       method: 'POST',
       body: data ? JSON.stringify(data) : undefined,
     }),
 
-  patch: (data?: any, config?: RequestConfig) =>
-    fetchWithToast({
+  patch: (endpoint: string, data?: any, config?: RequestConfig) =>
+    fetchWithToast(endpoint, {
       ...config,
       method: 'PATCH',
       body: data ? JSON.stringify(data) : undefined,
     }),
 
-  put: (data?: any, config?: RequestConfig) =>
-    fetchWithToast({
+  put: (endpoint: string, data?: any, config?: RequestConfig) =>
+    fetchWithToast(endpoint, {
       ...config,
       method: 'PUT',
       body: data ? JSON.stringify(data) : undefined,
     }),
 
-  delete: (config?: RequestConfig) =>
-    fetchWithToast({ ...config, method: 'DELETE' }),
+  delete: (endpoint: string, config?: RequestConfig) =>
+    fetchWithToast(endpoint, { ...config, method: 'DELETE' }),
 };
