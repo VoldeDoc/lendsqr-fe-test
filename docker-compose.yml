@@ -4,8 +4,8 @@ services:
   lendsqr-app:
     build: .
     ports:
-      - "$PORT:3000"  # Railway's PORT to container port 3000
+      - "${PORT:-3000}:3000"  # Use PORT env var or default to 3000
     environment:
       - NODE_ENV=production
-      - PORT=$PORT
+      - PORT=${PORT:-3000}
     command: ["/app/start.sh"]
