@@ -1,5 +1,7 @@
 import { toast } from 'react-toastify';
 
+// const VITE_BASE_URL =  import.meta.env.VITE_BASE_URL ;
+
 interface RequestConfig extends RequestInit {
   showSuccessToast?: boolean;
   successMessage?: string;
@@ -14,12 +16,11 @@ const handleResponse = async (response: Response) => {
     }));
     throw new Error(error.message);
   }
-  return response.json();
+  return await response.json();
 };
 
 // Generic fetch wrapper with toast
 const fetchWithToast = async (
-  endpoint: string = "/data/db.json",
   config: RequestConfig = {}
 ) => {
   const {
@@ -30,7 +31,7 @@ const fetchWithToast = async (
   } = config;
 
   try {
-    const response = await fetch(endpoint, {
+    const response = await fetch(`/data/db.json`, {
       ...fetchConfig,
       headers: {
         'Content-Type': 'application/json',
@@ -44,7 +45,7 @@ const fetchWithToast = async (
       toast.success(successMessage);
     }
 
-    return data;
+    return data.users;
   } catch (error) {
     if (showErrorToast) {
       toast.error(error instanceof Error ? error.message : 'Request failed');
@@ -55,30 +56,30 @@ const fetchWithToast = async (
 
 // API client methods
 export const apiClient = {
-  get: (endpoint: string = "/data/db.json", config?: RequestConfig) =>
-    fetchWithToast(endpoint, { ...config, method: 'GET' }),
+  get: (config?: RequestConfig) =>
+    fetchWithToast({ ...config, method: 'GET' }),
 
-  post: (endpoint: string, data?: any, config?: RequestConfig) =>
-    fetchWithToast(endpoint, {
+  post: (data?: any, config?: RequestConfig) =>
+    fetchWithToast({
       ...config,
       method: 'POST',
       body: data ? JSON.stringify(data) : undefined,
     }),
 
-  patch: (endpoint: string, data?: any, config?: RequestConfig) =>
-    fetchWithToast(endpoint, {
+  patch: (data?: any, config?: RequestConfig) =>
+    fetchWithToast({
       ...config,
       method: 'PATCH',
       body: data ? JSON.stringify(data) : undefined,
     }),
 
-  put: (endpoint: string, data?: any, config?: RequestConfig) =>
-    fetchWithToast(endpoint, {
+  put: (data?: any, config?: RequestConfig) =>
+    fetchWithToast({
       ...config,
       method: 'PUT',
       body: data ? JSON.stringify(data) : undefined,
     }),
 
-  delete: (endpoint: string, config?: RequestConfig) =>
-    fetchWithToast(endpoint, { ...config, method: 'DELETE' }),
+  delete: (config?: RequestConfig) =>
+    fetchWithToast({ ...config, method: 'DELETE' }),
 };
