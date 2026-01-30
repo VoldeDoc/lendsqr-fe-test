@@ -1,6 +1,6 @@
 import { toast } from 'react-toastify';
 
-const VITE_BASE_URL =  import.meta.env.VITE_BASE_URL ;
+// const VITE_BASE_URL =  import.meta.env.VITE_BASE_URL ;
 
 interface RequestConfig extends RequestInit {
   showSuccessToast?: boolean;
@@ -16,7 +16,7 @@ const handleResponse = async (response: Response) => {
     }));
     throw new Error(error.message);
   }
-  return response.json();
+  return await response.json();
 };
 
 // Generic fetch wrapper with toast
@@ -32,21 +32,21 @@ const fetchWithToast = async (
   } = config;
 
   try {
-    const response = await fetch(`${VITE_BASE_URL}${endpoint}`, {
+    const response = await fetch(`/data/db.json`, {
       ...fetchConfig,
       headers: {
         'Content-Type': 'application/json',
         ...fetchConfig.headers,
       },
     });
-
+    
     const data = await handleResponse(response);
-
+    
     if (showSuccessToast) {
       toast.success(successMessage);
     }
 
-    return data;
+    return data.users;
   } catch (error) {
     if (showErrorToast) {
       toast.error(error instanceof Error ? error.message : 'Request failed');
